@@ -1,25 +1,35 @@
 name: Pages
+
 on:
   push:
     branches:
-      - main # 监听main分支的push事件
+      - main  # 监听 main 分支的 push 事件
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # 使用你本地的Node.js主要版本，如20
+          node-version: "20"  # 保持和你本地一致
+          cache: 'npm'
+      
       - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npx hexo generate
-      - name: Upload Pages artifact
+        run: npm ci  # 比 npm install 更稳定，严格基于 package-lock.json
+      
+      - name: Generate Static Files
+        run: npx hexo generate  # 使用 npx 执行本地安装的 hexo
+      
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+
   deploy:
     needs: build
     permissions:
@@ -29,6 +39,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
