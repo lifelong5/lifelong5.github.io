@@ -102,3 +102,11 @@ theme: maupassant-hexo
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+
+archive_generator:
+  enabled: true
+  per_page: 10
+  yearly: true
+  monthly: true
+  order_by: -date
