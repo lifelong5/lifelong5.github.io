@@ -125,8 +125,8 @@ widgets: ## Seven widgets in sidebar provided: search, info, category, tag, rece
   - links
 
 info:
-  avatar: /img/avatar.png
-  discription: To be a better man.
+  avatar: /img/avatar.jpg
+  discription: 小如的博客
   outlinkitem:
     - name: twitter
       outlink: https://twitter.com/username
@@ -142,10 +142,10 @@ info:
       message: RSS
 
 links:
-  - title: site-name1
-    url: http://www.example1.com/
-    src: https://www.example1.com/favicon.ico
-    desc: XXX's Blog
+  - title: Mickey
+    url: https://blog.mickeymiao.cn/
+    src: https://blog.mickeymiao.cn/favicon.ico
+    desc: Mickey's Blog
   - title: site-name2
     url: http://www.example2.com/
     src: https://www.example1.com/favicon.ico
