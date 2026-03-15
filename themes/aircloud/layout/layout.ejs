@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang=<%= config.language === 'zh' ? 'zh-CN' : config.language %>>
 <%- partial('_partial/head') %>
-<body style="margin:0; padding:0; width:100%; min-height:100vh; background:#f5f5f5;">
+<body>
 
-<!-- 移动端导航按钮 -->
-<div class="site-nav-toggle" id="site-nav-toggle" style="display:none;">
+<div class="site-nav-toggle" id="site-nav-toggle">
     <button>
         <span class="btn-bar"></span>
         <span class="btn-bar"></span>
@@ -12,36 +11,25 @@
     </button>
 </div>
 
-<!-- 顶部标语（移动端显示） -->
-<div class="index-about" style="display:none;">
+<div class="index-about">
     <i> <%= config.subtitle %> </i>
 </div>
 
-<!-- 主容器：使用 Flex 布局实现全屏 -->
-<div class="index-container" style="display:flex; width:100%; min-height:100vh; margin:0; padding:0;">
-    
+<div class="index-container" style="display:flex; width:100%; padding:0; margin:0;">
     <% if(!is_current('/404')){%>
-    <!-- 左侧导航：固定宽度 280px，高度100% -->
-    <div class="index-left" style="width:280px; position:sticky; top:0; height:100vh; overflow-y:auto; background:#fff; box-shadow:2px 0 10px rgba(0,0,0,0.05);">
+    <div class="index-left">
         <%- partial('_partial/nav', null, {cache: false}) %>
-        <!-- 移动端标语（在导航内显示） -->
-        <div class="index-about-mobile" style="padding:20px; text-align:center; color:#666; border-top:1px solid #eee;">
+        <div class="index-about-mobile">
             <i> <%= config.subtitle %> </i>
         </div>
     </div>
     <% } %>
-    
-    <!-- 右侧内容区域：flex:1 自动占满剩余宽度 -->
-    <div class="index-middle" style="flex:1; padding:40px; background:#f5f5f5; overflow-y:auto;">
+    <div class="index-middle">
         <!-- Main Content -->
-        <div style="width:100%;">
-            <%- body %>
-        </div>
+        <%- body %>
     </div>
-    
 </div>
 
-<!-- 页脚 -->
 <%- partial('_partial/footer', null, {cache: false}) %>
 
 </body>
@@ -55,7 +43,6 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <%- js('js/index.js') %>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
 <%if( (page.comments) && config.comment && config.comment.type === 'gitment'){%>
 <%- js('js/gitment.js') %>
 <script>
@@ -71,16 +58,19 @@
     gitment.render('comment-container')
 </script>
 <%}%>
-
 <%if( (page.comments) && config.comment && config.comment.type === 'disqus'){%>
     <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
         if( '<%- config.comment.url %>' || '<%- config.comment.identifier %>')
         var disqus_config = function () {
-            this.page.url = '<%- config.comment.url %>';
-            this.page.identifier = '<%- config.comment.identifier %>';
+            this.page.url = '<%- config.comment.url %>';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '<%- config.comment.identifier %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
 
-        (function() {
+        (function() { // DON'T EDIT BELOW THIS LINE
             var d = document, s = d.createElement('script');
             s.src = '<%- config.comment.script %>';
             s.setAttribute('data-timestamp', +new Date());
@@ -94,7 +84,6 @@
 <% } %>
 
 <%if( (page.comments) && config.comment && config.comment.type === 'livere'){%>
-    <div id="lv-container" style="margin-top:40px;"></div>
     <script type="text/javascript">
        (function() {
            if (typeof LivereTower === 'function') { return; }
@@ -112,39 +101,6 @@
        })();
     </script>
     <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
 <% } %>
-
-<!-- 针对移动端的响应式样式 -->
-<style>
-@media (max-width: 768px) {
-    .index-container {
-        flex-direction: column !important;
-    }
-    .index-left {
-        width: 100% !important;
-        height: auto !important;
-        position: relative !important;
-        box-shadow: none !important;
-        border-bottom: 1px solid #eee;
-    }
-    .index-middle {
-        padding: 20px !important;
-    }
-    .site-nav-toggle {
-        display: block !important;
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 1000;
-    }
-    .index-about {
-        display: block !important;
-        text-align: center;
-        padding: 15px;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-    }
-}
-</style>
-
 </html>

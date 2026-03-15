@@ -1340,3 +1340,77 @@ pre .javascript .function {
 .gitment-comment p {
   text-indent: 0;
 }
+/* ===== 自定义全屏布局 ===== */
+.index-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 左侧导航 - 宽度 350px，紧贴左边 */
+.index-left {
+    width: 350px !important;
+    min-width: 350px !important;
+    max-width: 350px !important;
+    float: none !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+/* 左侧导航内部内容 */
+.nav {
+    width: 100% !important;
+    padding: 30px 0 !important;
+}
+
+/* 右侧内容 - 占满剩余空间 */
+.index-middle {
+    width: auto !important;
+    flex: 1 !important;
+    float: none !important;
+    padding: 40px !important;
+    margin: 0 !important;
+    background: #f5f5f5;
+}
+
+/* 文章预览容器 - 占满 */
+.post-preview-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+/* 文章预览卡片 */
+.post-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 20px 0 !important;
+    padding: 25px !important;
+    box-sizing: border-box !important;
+}
+
+/* 清除浮动干扰 */
+.index-container::before,
+.index-container::after {
+    display: none !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .index-container {
+        flex-direction: column !important;
+    }
+    .index-left {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+    .index-middle {
+        padding: 20px !important;
+    }
+}
