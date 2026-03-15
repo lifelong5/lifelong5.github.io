@@ -132,10 +132,10 @@ info:
       outlink: https://twitter.com/username
       message: Twitter
     - name: envelope
-      outlink: mailto:admin@domain.com
+      outlink: huangxuemeiyu@qq.com
       message: Email
     - name: github
-      outlink: https://github.com/username
+      outlink: https://github.com/lifelong5
       message: Github
     - name: rss
       outlink: /atom.xml
