@@ -128,9 +128,6 @@ info:
   avatar: /img/avatar.jpg
   discription: 小如的博客
   outlinkitem:
-    - name: twitter
-      outlink: https://twitter.com/username
-      message: Twitter
     - name: envelope
       outlink: mailto:huangxuemeiyu@qq.com
       message: Email
@@ -139,7 +136,7 @@ info:
       message: Github
 
 links:
-  - title: Mickey
+  - title: MickeyMiao
     url: https://blog.mickeymiao.cn/
     src: https://blog.mickeymiao.cn/favicon.ico
     desc: Mickey's Blog
