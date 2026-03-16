@@ -137,7 +137,7 @@ info:
     - name: github
       outlink: https://github.com/lifelong5
       message: Github
-    - name: fa-heart
+    - name: heart
       outlink: https://www.xiaohongshu.com/user/profile/5d0064a6000000001103b40a
       message: 小红书
 
